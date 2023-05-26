@@ -1,0 +1,26 @@
+def create_account(username, password):
+    """
+    This function creates an account with the given username and password.
+    
+    Parameters:
+    username (str): The desired username for the account
+    password (str): The desired password for the account
+    
+    Returns:
+    str: A message indicating whether the account was successfully created or not
+    """
+    try:
+        # Check if username and password are strings
+        if not isinstance(username, str) or not isinstance(password, str):
+            raise TypeError("Both username and password must be strings")
+        
+        # Check if password meets minimum requirements
+        if len(password) < 8:
+            raise ValueError("Password must be at least 8 characters long")
+        
+        # Create account and return success message
+        return f"Account created successfully with username '{username}' and password '{password}'"
+    except (TypeError, ValueError) as e:
+        # Log the error
+        print(f"Error: {e}")
+        return "Account creation failed"
